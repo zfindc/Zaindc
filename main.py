@@ -2,7 +2,7 @@
 """make.fun entry program.
 
 Writes the artwork bundled in this repository
-("Anak kucing (1).png") to /output/entry.png.
+("art.jpg") to /output/entry.png.
 Standard library only, no network access, and the output bytes are
 identical on every run, as the bounty requires.
 """
@@ -11,9 +11,7 @@ import pathlib
 
 
 def main() -> None:
-    src = pathlib.Path(__file__).resolve().with_name(
-        "Anak kucing (1).png"
-    )
+    src = pathlib.Path(__file__).resolve().with_name("art.jpg")
     out_dir = pathlib.Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "entry.png").write_bytes(src.read_bytes())
